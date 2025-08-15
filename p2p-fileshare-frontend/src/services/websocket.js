@@ -16,7 +16,10 @@ class WebSocketService {
 
   connectWebSocket() {
     try {
-      this.socket = new WebSocket(`ws://localhost:8080/ws?peer_id=${this.peerId}`);
+      // Use relative WebSocket URL for both local and production
+      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const host = window.location.host;
+      this.socket = new WebSocket(`${protocol}//${host}/ws?peer_id=${this.peerId}`);
 
       this.socket.onopen = () => {
         console.log('WebSocket connected');

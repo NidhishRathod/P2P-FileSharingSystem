@@ -32,7 +32,7 @@ func main() {
 
 	// Serve React frontend static files
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("frontend_build/static"))))
-	
+
 	// Serve React app for all other routes (SPA routing)
 	router.PathPrefix("/").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Check if the file exists in frontend_build

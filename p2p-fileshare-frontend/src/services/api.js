@@ -1,5 +1,6 @@
-const API_BASE_URL = 'http://localhost:8080';
-const FILE_SERVER_URL = 'http://localhost:9000';
+// Use relative URLs for both local development and production deployment
+const API_BASE_URL = '';
+const FILE_SERVER_URL = '';
 
 const handleResponse = async (response) => {
     if (!response.ok) {
@@ -23,7 +24,7 @@ export const checkServers = async () => {
         });
         
         if (!apiResponse.ok) {
-            throw new Error('API server is not responding on port 8080');
+            throw new Error('API server is not responding');
         }
         
         return true;

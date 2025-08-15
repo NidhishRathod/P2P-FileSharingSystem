@@ -155,10 +155,10 @@ const PeerRegistration = ({ onPeerRegistered }) => {
                         >
                             {error}
                             <Box sx={{ mt: 1 }}>
-                                <Link href="http://localhost:8080" target="_blank" sx={{ mr: 1 }}>
+                                <Link href="/" target="_blank" sx={{ mr: 1 }}>
                                     Check API Server
                                 </Link>
-                                <Link href="http://localhost:9000" target="_blank">
+                                <Link href="/" target="_blank">
                                     Check File Server
                                 </Link>
                             </Box>
