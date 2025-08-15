@@ -1,0 +1,39 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+diagrams.md
+documentation.md
+
+# Temporary files
+temp-app/
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node modules (will be installed fresh)
+p2p-fileshare-frontend/node_modules/
+p2p-fileshare-frontend/npm-debug.log*
+
+# Go build artifacts
+p2p-fileshare/*.exe
+p2p-fileshare/*.db
+*.exe
+*.db
+
+# Environment files
+.env
+.env.local
+.env.production
