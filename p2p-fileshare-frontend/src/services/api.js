@@ -1,5 +1,25 @@
-const API_BASE_URL = 'http://localhost:8080';
-const FILE_SERVER_URL = 'http://localhost:9000';
+// Dynamic API base URL - works in development and production
+const getApiBaseUrl = () => {
+  // In development, use localhost
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return 'http://localhost:8080/api';
+  }
+  
+  // In production, use the backend URL from environment or default to Render
+  // You can override this by setting window.BACKEND_URL in your HTML
+  return window.BACKEND_URL ? `${window.BACKEND_URL}/api` : 'https://p2p-filesharingsystem.onrender.com/api';
+};
+
+const getFileBaseUrl = () => {
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return 'http://localhost:9000/files';
+  }
+  
+  return window.BACKEND_URL ? `${window.BACKEND_URL}/files` : 'https://p2p-filesharingsystem.onrender.com/files';
+};
+
+const API_BASE_URL = getApiBaseUrl();
+const FILE_BASE_URL = getFileBaseUrl();
 
 const handleResponse = async (response) => {
     if (!response.ok) {
@@ -23,7 +43,7 @@ export const checkServers = async () => {
         });
         
         if (!apiResponse.ok) {
-            throw new Error('API server is not responding on port 8080');
+            throw new Error('API server is not responding');
         }
         
         return true;
@@ -86,5 +106,5 @@ export const downloadFile = async (peerId, sourcePeerId, filename) => {
 };
 
 export const getFileUrl = (peerId, filename) => {
-    return `${FILE_SERVER_URL}/files/${peerId}/${filename}`;
-}; 
+    return `${FILE_BASE_URL}/${peerId}/${filename}`;
+};

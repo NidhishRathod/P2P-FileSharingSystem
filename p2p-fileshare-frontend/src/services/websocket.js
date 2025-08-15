@@ -8,6 +8,18 @@ class WebSocketService {
     this.peerId = null;
   }
 
+  getWebSocketUrl() {
+    // In development, use localhost
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return `ws://localhost:8080/ws?peer_id=${this.peerId}`;
+    }
+    
+    // In production, use the backend URL from environment or default to Render
+    const backendUrl = window.BACKEND_URL || 'https://p2p-filesharingsystem.onrender.com';
+    const wsUrl = backendUrl.replace('https://', 'wss://').replace('http://', 'ws://');
+    return `${wsUrl}/ws?peer_id=${this.peerId}`;
+  }
+
   connect(peerId) {
     this.peerId = peerId;
     this.reconnectAttempts = 0;
@@ -16,7 +28,9 @@ class WebSocketService {
 
   connectWebSocket() {
     try {
-      this.socket = new WebSocket(`ws://localhost:8080/ws?peer_id=${this.peerId}`);
+      const wsUrl = this.getWebSocketUrl();
+      console.log('Connecting to WebSocket:', wsUrl);
+      this.socket = new WebSocket(wsUrl);
 
       this.socket.onopen = () => {
         console.log('WebSocket connected');

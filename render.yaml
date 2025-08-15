@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: p2p-fileshare-backend
+    env: go
+    buildCommand: cd p2p-fileshare && go mod download && go build -o app .
+    startCommand: cd p2p-fileshare && ./app
+    envVars:
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/peers
+    plan: free
