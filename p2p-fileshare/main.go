@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 )
@@ -12,6 +13,12 @@ func main() {
 	InitDB()
 
 	router := mux.NewRouter()
+
+	// Health check endpoint for cloud deployment
+	router.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("OK"))
+	}).Methods("GET")
 
 	router.HandleFunc("/register", RegisterPeer).Methods("POST", "OPTIONS")
 	router.HandleFunc("/peers", GetPeers).Methods("GET", "OPTIONS")
@@ -25,7 +32,12 @@ func main() {
 	// Apply CORS middleware to all routes
 	handler := CORS(router)
 
-	port := "8080"
+	// Use environment variable for port (cloud deployment requirement)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
 	fmt.Println("Tracker running on port", port)
 	go func() {
 		log.Fatal(http.ListenAndServe(":"+port, handler))
