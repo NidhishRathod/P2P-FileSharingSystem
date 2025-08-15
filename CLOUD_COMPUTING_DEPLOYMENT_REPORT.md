@@ -1,10 +1,8 @@
 # Cloud Computing Deployment Report
 ## P2P File Sharing System
 
-**Student:** Nidhish Rathod  
-**Course:** Cloud Computing  
-**Project:** P2P File Sharing System  
-**Date:** December 2024  
+**Nidhish Rathod**
+
 **Repository:** [https://github.com/NidhishRathod/P2P-FileSharingSystem](https://github.com/NidhishRathod/P2P-FileSharingSystem)
 
 ---
