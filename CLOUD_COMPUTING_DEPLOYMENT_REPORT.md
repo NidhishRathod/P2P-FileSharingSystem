@@ -557,8 +557,3 @@ git push origin deployment-ready
 
 ---
 
-**Report Generated:** December 2024  
-**Author:** Nidhish Rathod  
-**Course:** Cloud Computing  
-**Institution:** College  
-**Status:** Project Successfully Deployed and Operational
