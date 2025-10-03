@@ -208,7 +208,7 @@ Future outlook suggests deeper integration between P2P, blockchain, and cloud se
 ## 10. References
 
 - Protocol Labs. *IPFS Whitepaper*. [https://ipfs.tech](https://ipfs.tech)
-- Resilio. *Enterprise Case Studies*. [https://www.resilio.com/case-studies](https://www.resilio.com/case-studies)
+- Resilio. *Enterprise Case Studies*. [https://www.resilio.com/case-studies](https://www.resilio.com)
 - BitTorrent Inc. *Technology Overview*. [https://www.bittorrent.com](https://www.bittorrent.com)
 - Filecoin Project Documentation. [https://filecoin.io](https://filecoin.io)
 - Author’s GitHub Repository: [https://github.com/NidhishRathod/P2P-FileSharingSystem](https://github.com/NidhishRathod/P2P-FileSharingSystem)
